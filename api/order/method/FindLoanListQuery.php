@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Class FetchOrderById
+ * Class FindLoanListQuery
  *
- * aliexpress.trade.redefining.findorderbyid (交易订单详情查询)
- * @link   http://127.0.0.1:4321/order?method=FetchOrderById
+ * aliexpress.trade.redefining.findloanlistquery (查询订单放款信息)
+ * @link   http://127.0.0.1:4321/order/FindLoanListQuery
  *
  */
-class FindOrderById extends BaseAbstract
+class FindLoanListQuery extends BaseAbstract
 {
 
     public function __construct()
@@ -25,11 +25,12 @@ class FindOrderById extends BaseAbstract
     public function respond($request=[])
     {
         $c = $this->loadC();
-        $req = new AliexpressTradeRedefiningFindorderbyidRequest;
-        $param1 = $this->getParam1($request);
+        $req = new AliexpressTradeRedefiningFindloanlistqueryRequest;
+        $param1 = $this->getFundloanRequest($request);
 
         $req->setParam1(json_encode($param1));
         $resp = $c->execute($req, $this->sessionKey);
+
         echo $this->getResultJson($resp);exit;
 
     }

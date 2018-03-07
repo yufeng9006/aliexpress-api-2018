@@ -174,5 +174,19 @@ abstract class BaseAbstract
         return $param1;
     }
 
+    public function getFundloanRequest($request=[])
+    {
+        $param1 = new FundloanRequest();
+        $request['format'] = self::RESULT_TYPE;
+
+        foreach($request as $k=>$v) {
+            //  对象是否含有某属性，如果含有那么就赋值
+            if(property_exists($param1, $k) === true){
+                $param1->$k = $v;
+            }
+        }
+        return $param1;
+    }
+
 }
 
