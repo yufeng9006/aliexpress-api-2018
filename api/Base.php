@@ -188,5 +188,35 @@ abstract class BaseAbstract
         return $param1;
     }
 
+    public function getAliexpressMessageRedefiningVersiontwoQuerymsgdetaillistRequest($request=[])
+    {
+        $param1 = new AliexpressMessageRedefiningVersiontwoQuerymsgdetaillistRequest();
+        $request['format'] = self::RESULT_TYPE;
+
+        foreach($request as $k=>$v) {
+            //  对象是否含有某属性，如果含有那么就赋值
+            if(property_exists($param1, $k) === true){
+                $setName = 'set'.ucfirst($k);
+                $param1->$setName = $v;
+            }
+        }
+        return $param1;
+    }
+
+    public function getAliexpressLogisticsRedefiningGetonlinelogisticsinfoRequest($request=[])
+    {
+        $param1 = new AliexpressLogisticsRedefiningGetonlinelogisticsinfoRequest();
+        $request['format'] = self::RESULT_TYPE;
+
+        foreach($request as $k=>$v) {
+            //  对象是否含有某属性，如果含有那么就赋值
+            if(property_exists($param1, $k) === true){
+                $setName = 'set'.ucfirst($k);
+                $param1->$setName = $v;
+            }
+        }
+        return $param1;
+    }
+
 }
 

@@ -25,7 +25,20 @@ class GetOnlineLogisticsInfo extends BaseAbstract
     public function respond($request=[])
     {
         $c = $this->loadC();
-        $req = new AliexpressLogisticsRedefiningGetprintinfoRequest;
+
+        $req = new AliexpressLogisticsRedefiningGetprintinfosRequest;
+        if(isset($request['print_detail'])) {
+            $req->setPrintDetail("print_detail");
+        }
+        $warehouse_order_query_d_t_os = new AeopWarehouseOrderQueryPdfRequest;
+        if(isset($request['id'])){
+            $warehouse_order_query_d_t_os->id=$request['extend_data'];
+        }
+        if(isset($request['international_logistics_id'])){
+            $warehouse_order_query_d_t_os->international_logistics_id=$request['extend_data'];
+        }
+        $req->setWarehouseOrderQueryDTOs(json_encode($warehouse_order_query_d_t_os));
+
         $resp = $c->execute($req, $this->sessionKey);
         echo $this->getResultJson($resp);exit;
 

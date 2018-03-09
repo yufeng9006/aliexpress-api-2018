@@ -25,10 +25,19 @@ class QueryMsgDetailList extends BaseAbstract
     public function respond($request=[])
     {
         $c = $this->loadC();
-        $req = new AliexpressMessageRedefiningVersiontwoQuerymsgdetaillistRequest;
-        $param1 = $this->getParam1($request);
-
-        $req->setParam1(json_encode($param1));
+        $req = new AliexpressMessageRedefiningVersiontwoQuerymsgdetaillistRequest();
+        if(isset($request['extern_id'])) {
+            $req->setExternId($request['extern_id']);
+        }
+        if(isset($request['channel_id'])) {
+            $req->setChannelId($request['channel_id']);
+        }
+        if(isset($request['page_size'])) {
+            $req->setPageSize($request['page_size']);
+        }
+        if(isset($request['current_page'])) {
+            $req->setCurrentPage($request['current_page']);
+        }
         $resp = $c->execute($req, $this->sessionKey);
         echo $this->getResultJson($resp);exit;
 

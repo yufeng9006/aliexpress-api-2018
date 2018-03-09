@@ -25,6 +25,7 @@ class QueryMsgRelationList extends BaseAbstract
     public function respond($request=[])
     {
         $c = $this->loadC();
+
         $req = new AliexpressMessageRedefiningVersiontwoQuerymsgrelationlistRequest;
         $query = $this->getRelationQueryDto($request);
         $req->setQuery(json_encode($query));

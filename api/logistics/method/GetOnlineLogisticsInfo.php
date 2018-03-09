@@ -25,7 +25,7 @@ class GetOnlineLogisticsInfo extends BaseAbstract
     public function respond($request=[])
     {
         $c = $this->loadC();
-        $req = new AliexpressLogisticsRedefiningGetprintinfoRequest;
+        $req = $this->getAliexpressLogisticsRedefiningGetonlinelogisticsinfoRequest($request);
         $resp = $c->execute($req, $this->sessionKey);
         echo $this->getResultJson($resp);exit;
 
